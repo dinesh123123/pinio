@@ -1,0 +1,91 @@
+<style>#line_chart {  
+    height: 1px;
+     margin-top: opx;
+     margin-left: 25px; }
+     </style>
+
+      <section class="content dashboard">
+            <div class="main-graph">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-10 padding-0 overflow-hidden">
+                            <div class="graph-area">
+                                 <div id="line_chart"></div>
+                            </div> 
+                        </div>
+                      
+                    </div>
+                </div>
+                <!-- #END# Main Graph-->
+            <div class="page-heading">
+                <h1>Category</h1>
+                <ol class="breadcrumb">
+                    <li><a href="../../index">Home</a></li>
+                    <li class="active">Category</li>
+                </ol>
+            </div>
+
+
+            <div class="panel panel-default">
+            
+  <div class="panel-heading"> <button type="open-button" onclick="openForm()"class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></div>
+<div class="form-popup" id="myForm">
+ <h2>Add Category </h2>
+  <form  class="form-container"action="/admin/category" enctype="multipart/form-data" method="POST">
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="category_name" required>
+
+    <label for="file"><b>select file</b></label>
+    <input type="file" placeholder="Choose image" name="image"  required>
+    <br><br>
+    <button type="submit" class="btn">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+
+           
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="myTable" class="table js-exportable">
+                            
+                            <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                    <th>categoryId</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
+                                   
+        <tr>
+         <td><%= i+1%></td>
+         <td><%=data[i]._id%></td>
+        <td><%=data[i].category_name%></td>
+ <td><img src="/uploads/<%=data[i].image%>"alt="cars"style="height:75px;weight:75px;"></td>
+
+
+<td><a href ="/admin/category/delete/<%= data[i]._id%>"class="btn btn-circle  btn-lg  btn-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                        <% } %>
+                               </tbody> 
+                        
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task data -->
+            </div>
+        </section>

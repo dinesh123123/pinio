@@ -1,0 +1,83 @@
+<style>#line_chart {  
+    height: 1px;
+     margin-top: opx;
+     margin-left: 25px; } 
+     img {
+  border-radius: 50%;
+} 
+</style>
+
+      <section class="content dashboard">
+            <div class="main-graph">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-10 padding-0 overflow-hidden">
+                            <div class="graph-area">
+                                 <div id="line_chart"></div>
+                            </div> 
+                        </div>
+                      
+                    </div>
+                </div>
+                <!-- #END# Main Graph-->
+            <div class="page-heading">
+                <h1>Questions</h1>
+                <ol class="breadcrumb">
+                    <li><a href="../../index">Home</a></li>
+                    <li class="active">Questions</li>
+                </ol>
+            </div>
+<div class="panel panel-default">
+                <div class="panel-heading">
+                <button type="open-button" onclick="#"class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></div>
+               
+
+            
+  
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="myTable" class="table js-exportable">
+                            
+                            <thead>
+                    <tr>
+                    <th>S.No</th>
+                    <th>Image</th>
+                    <th>category name</th>               <th>Questions</th>
+                    <th>Option A</th>
+                    <th>Option B</th>
+                    <th>Option c</th>
+                    <th>Option D</th>
+                    <th>Answer</th>               
+                    <th>Action</th>
+        </tr>
+    </thead>
+        <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
+                                   
+        <tr>
+         <td><%= i+1%></td>
+         <td><img src="/uploads/<%=data[i].image%>"alt="cars"style="height:35px;weight:35px;"></td>
+        <td><%=data[i].category_name%></td>
+         <td><%=data[i].question%></td>
+         <td><%=data[i].optiona%></td>
+         <td><%=data[i].optionb%></td>
+         <td><%=data[i].optionc%></td>
+        <td><%=data[i].optiond%></td>
+        <td><%=data[i].answer%></td>
+ 
+
+<td><a href ="/admin/question/delete/<%= data[i]._id%>"class="btn btn-circle  btn-lg  btn-danger"><i class="fa fa-trash"></i></a>
+
+<a href="#" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
+
+</td>
+                                        </tr>
+                                        <% } %>
+                               </tbody> 
+                        
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task data -->
+            </div>
+        </section>
